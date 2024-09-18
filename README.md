@@ -27,3 +27,49 @@ At the moment of writing, the API only supports French addresses and French prov
 To run the API locally, execute the following command:
 ```bash
 python manage.py runserver
+```
+
+### Example Query
+
+You can query the API using a URL like the following:
+
+```plaintext
+http://127.0.0.1:8000/api/coverage/?q=42+rue+papernest+75011+Paris
+```
+And you will have a response similar to this:
+```GET /api/coverage/?q=42+rue+papernest+75011+Paris
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "Orange": {
+        "2G": true,
+        "3G": true,
+        "4G": true
+    },
+    "SFR": {
+        "2G": true,
+        "3G": true,
+        "4G": true
+    },
+    "Bouygues Telecom": {
+        "2G": true,
+        "3G": true,
+        "4G": true
+    },
+    "Free": {
+        "2G": false,
+        "3G": true,
+        "4G": true
+    }
+}
+```
+
+
+Alternatively, you can input the address in a more human-readable format:
+
+```plaintext
+http://127.0.0.1:8000/api/coverage/?q=Rue des Garosses 33310 Lormont, France
+```
